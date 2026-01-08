@@ -1,0 +1,88 @@
+:root {
+  --black: #1a1a1a;
+  --dark: #222225;
+  --dark-lighter: #28282cb9;
+  --gray: #ecebf1;
+  --light: #ffffffde;
+  --paper: #ffffff;
+  --ink: #213547;
+  --secondary: #535bf2;
+  --secondary-light: #646cff;
+  --secondary-lighter: #747bff;
+  --bg-app: var(--black);
+  --bg-element: var(--dark);
+  --text: var(--light);
+  --text-btn: var(--light);
+  --link-hover: var(--secondary-light);
+
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica,
+    arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+  color: var(--text);
+  background-color: var(--bg-app);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.094rem;
+  text-underline-offset: 0.125rem;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+button {
+  border: 1px solid var(--dark-lighter);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--bg-element);
+  color: var(--text-btn);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+button:hover {
+  border-color: var(--link-hover);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-app: var(--paper);
+    --bg-element: var(--gray);
+    --text: var(--ink);
+    --text-btn: var(--secondary);
+    --link-hover: var(--secondary);
+  }
+}
