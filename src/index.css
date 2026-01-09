@@ -1,19 +1,30 @@
 :root {
+  /* Color: */
+
   --black: #1a1a1a;
   --dark: #222225;
   --dark-lighter: #28282cb9;
   --gray: #ecebf1;
+  --gray-darker: #e2e0ed;
   --light: #ffffffde;
   --paper: #ffffff;
   --ink: #213547;
   --secondary: #535bf2;
   --secondary-light: #646cff;
   --secondary-lighter: #747bff;
-  --bg-app: var(--black);
-  --bg-element: var(--dark);
-  --text: var(--light);
-  --text-btn: var(--light);
-  --link-hover: var(--secondary-light);
+
+  --bg-color-app: var(--black);
+  --bg-color-element: var(--dark);
+  --border-color: var(--dark-lighter);
+  --border-color-hover: var(--secondary-lighter);
+  --link-color-hover: var(--secondary-lighter);
+  --text-color: var(--light);
+  --text-color-btn: var(--light);
+
+  /* Size: */
+
+  --line-thickness: 0.094rem;
+  --border-size: 0.125rem;
 
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica,
@@ -22,32 +33,15 @@
   line-height: 1.5;
 
   color-scheme: light dark;
-  color: var(--text);
-  background-color: var(--bg-app);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: currentColor;
-  text-decoration-line: underline;
-  text-decoration-thickness: 0.094rem;
-  text-underline-offset: 0.125rem;
-}
-
-a:hover {
-  color: var(--link-hover);
+  color: var(--text-color);
+  background-color: var(--bg-color-app);
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 h1 {
@@ -55,34 +49,50 @@ h1 {
   line-height: 1.2;
 }
 
+a {
+  font-weight: 500;
+  color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--line-thickness);
+  text-underline-offset: 0.125rem;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+a:focus-visible {
+  border-radius: 0.25rem;
+  outline: var(--border-size) solid var(--border-color-hover);
+  outline-offset: 0.25rem;
+}
+
 button {
-  border: 1px solid var(--dark-lighter);
-  border-radius: 8px;
+  border: var(--border-size) solid var(--border-color);
+  border-radius: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: var(--bg-element);
-  color: var(--text-btn);
+  background-color: var(--bg-color-element);
+  color: var(--text-color-btn);
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: var(--link-hover);
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:is(:hover, :focus, :focus-visible) {
+  border-color: var(--border-color-hover);
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg-app: var(--paper);
-    --bg-element: var(--gray);
-    --text: var(--ink);
-    --text-btn: var(--secondary);
-    --link-hover: var(--secondary);
+    --border-color: var(--gray-darker);
+    --border-color-hover: var(--secondary);
+    --bg-color-app: var(--paper);
+    --bg-color-element: var(--gray);
+    --link-color-hover: var(--secondary);
+    --text-color: var(--ink);
+    --text-color-btn: var(--secondary);
   }
 }

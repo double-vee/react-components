@@ -1,0 +1,39 @@
+.inputBase {
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font: inherit;
+  font-weight: 500;
+}
+
+.inputBase:focus,
+.inputBase:focus-visible {
+  outline: none;
+}
+
+.inputBase:invalid {
+  box-shadow: none;
+}
+
+.inputBase::placeholder {
+  color: color-mix(in srgb, currentColor 60%, transparent);
+  opacity: 1;
+  font-weight: 400;
+}
+
+.inputBorder {
+  border: var(--border-size) solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg-color-element);
+  transition: border-color 0.25s;
+}
+
+.inputBorder:is(:hover, :focus-within) {
+  border-color: var(--border-color-hover);
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+}
