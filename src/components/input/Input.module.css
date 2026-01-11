@@ -1,9 +1,11 @@
 .inputBase {
+  width: 100%;
   border: none;
   background-color: transparent;
   color: var(--text-color);
   font: inherit;
   font-weight: 500;
+  text-indent: 0.5rem;
 }
 
 .inputBase:focus,
@@ -23,7 +25,7 @@
 
 .inputBorder {
   border: var(--border-size) solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: 4rem;
   padding: 0.5rem 0.75rem;
   background-color: var(--bg-color-element);
   transition: border-color 0.25s;

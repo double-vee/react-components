@@ -53,7 +53,8 @@ export const TextInput = ({
       <InputWrapper
         className={`${styles.inputBorder} ${styles.inputWrapper} ${className}`}
       >
-        <Input {...props}>{children}</Input>
+        <Input {...props} />
+        {children}
       </InputWrapper>
     );
   }
