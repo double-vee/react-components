@@ -1,0 +1,14 @@
+.header {
+  background-color: var(--secondary);
+}
+
+.headerWrapper {
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+.headerNav {
+  display: flex;
+  gap: 1rem;
+}

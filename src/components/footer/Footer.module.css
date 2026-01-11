@@ -1,0 +1,13 @@
+.footer {
+  background-color: var(--secondary-lighter);
+}
+
+.footerWrapper {
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footerNav {
+  display: flex;
+  gap: 1rem;
+}
