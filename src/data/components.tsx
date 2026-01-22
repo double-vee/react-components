@@ -1,3 +1,8 @@
+export interface Component {
+  category: string;
+  title: string;
+}
+
 export const COMPONENTS = [
   {
     category: 'ui',

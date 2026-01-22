@@ -19,13 +19,7 @@ interface TextInputProps extends InputProps {
   variant?: InputVariant;
 }
 
-const Input: React.FC<InputProps> = ({
-  id,
-  label,
-  placeholder,
-  className,
-  ...props
-}) => {
+const Input = ({ id, label, placeholder, className, ...props }: InputProps) => {
   return (
     <input
       id={id}
@@ -34,11 +28,11 @@ const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       className={`${styles.inputBase} ${className}`}
       {...props}
-    ></input>
+    />
   );
 };
 
-const InputWrapper: React.FC<InputWrapperProps> = ({ children, className }) => {
+const InputWrapper = ({ children, className }: InputWrapperProps) => {
   return <div className={className}>{children}</div>;
 };
 
@@ -51,18 +45,12 @@ export const TextInput = ({
   if (variant === 'complex') {
     return (
       <InputWrapper
-        className={`${styles.inputBorder} ${styles.inputWrapper} ${className}`}
-      >
+        className={`${styles.inputBorder} ${styles.inputWrapper} ${className}`}>
         <Input {...props} />
         {children}
       </InputWrapper>
     );
   }
 
-  return (
-    <Input
-      {...props}
-      className={`${styles.inputBorder} ${className}`}
-    ></Input>
-  );
+  return <Input {...props} className={`${styles.inputBorder} ${className}`} />;
 };

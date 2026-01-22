@@ -1,4 +1,5 @@
-import { Search } from '../search/Search';
+import { NavLink } from 'react-router';
+import { SearchForm } from '../search/SearchForm';
 import { SectionWrapper } from '../section-wrapper/SectionWrapper';
 import styles from './Header.module.css';
 
@@ -7,10 +8,11 @@ export const Header = () => {
     <header className={styles.header}>
       <SectionWrapper className={styles.headerWrapper}>
         <nav className={styles.headerNav}>
-          <a href="#">Nav link example</a>
-          <a href="#">Nav link example</a>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="signup">Sign up</NavLink>
+          <NavLink to="login">Log in</NavLink>
         </nav>
-        <Search />
+        <SearchForm />
       </SectionWrapper>
     </header>
   );

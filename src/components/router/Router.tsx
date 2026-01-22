@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import { Layout } from '../layout/Layout';
 import { HomePage } from '../../pages/home/Home';
 import { CategoryPage } from '../../pages/components/Components';
-import { ComponentPage } from '../../pages/component/Component';
+import { ComponentPage } from '../../pages/components/component/Component';
 import { CartPage } from '../../pages/cart/Cart';
 import { SignupPage } from '../../pages/signup/Signup';
 import { LoginPage } from '../../pages/login/Login';
