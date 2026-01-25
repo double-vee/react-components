@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import { Button } from '../button/Button';
+import { Icon } from '../icon/Icon';
+import { searchIcon } from '../icon/search';
 import { TextInput } from '../input/Input';
 import { COMPONENTS, type Component } from '../../data/components';
 import styles from './SearchForm.module.css';
 
-export const SearchForm = () => {
-  const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Component[]>([]);
+interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  label: string;
+  name: string;
+  placeholder: string;
+  setSearchResults: React.Dispatch<React.SetStateAction<Component[] | []>>;
+}
 
-  const list = searchResults.map((item) => (
-    <li key={item.title}>{item.title}</li>
-  ));
+export const SearchForm = ({
+  label,
+  name,
+  placeholder,
+  setSearchResults,
+}: SearchFormProps) => {
+  const [query, setQuery] = useState('');
+  const id = useId();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,27 +35,31 @@ export const SearchForm = () => {
     }
   }
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value);
+  }
+
   return (
     <search>
       <form
-        id="searchForm"
-        name="searchForm"
+        id={`searchForm-${id}`}
+        name={name}
         className={styles.searchForm}
         onSubmit={handleSubmit}>
         <TextInput
-          id="search"
-          label="Search"
+          id={`searchInput-${id}`}
+          label={label}
           name="q"
-          placeholder="Search term example"
+          placeholder={placeholder}
           type="search"
           variant="complex"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}>
-          <button>Search</button>
+          onChange={handleChange}>
+          <Button label="Submit search term">
+            <Icon path={searchIcon} />
+          </Button>
         </TextInput>
       </form>
-      <h2>Search results:</h2>
-      <ul>{list}</ul>
     </search>
   );
 };

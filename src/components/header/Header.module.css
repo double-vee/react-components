@@ -4,7 +4,7 @@
 
 .headerWrapper {
   justify-content: flex-end;
-  align-items: baseline;
+  align-items: center;
   gap: 2rem;
 }
 
