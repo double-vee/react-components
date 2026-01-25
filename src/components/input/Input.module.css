@@ -31,11 +31,21 @@
   transition: border-color 0.25s;
 }
 
-.inputBorder:is(:hover, :focus-within) {
+.inputBorder:hover {
   border-color: var(--border-color-hover);
+}
+
+.inputBorder:is(input:focus-visible),
+.inputBorder:has(input:focus-visible) {
+  outline: var(--border-size) solid var(--border-color-hover);
+  outline-offset: 0.25rem;
 }
 
 .inputWrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.inputWrapper button {
+  flex-shrink: 0;
 }

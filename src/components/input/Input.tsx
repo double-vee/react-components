@@ -1,3 +1,4 @@
+import { clsx as cn } from 'clsx';
 import styles from './Input.module.css';
 
 type InputVariant = 'complex';
@@ -14,19 +15,21 @@ interface InputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-interface TextInputProps extends InputProps {
+export interface TextInputProps extends InputProps {
   children?: React.ReactNode;
   variant?: InputVariant;
 }
 
 const Input = ({ id, label, placeholder, className, ...props }: InputProps) => {
+  const inputStyles = cn(styles.inputBase, className);
+
   return (
     <input
       id={id}
       aria-label={label}
       aria-placeholder={placeholder}
       placeholder={placeholder}
-      className={`${styles.inputBase} ${className}`}
+      className={inputStyles}
       {...props}
     />
   );
@@ -42,15 +45,17 @@ export const TextInput = ({
   variant,
   ...props
 }: TextInputProps) => {
+  const inputStyles = cn(styles.inputBorder, className);
+  const textIputStyles = cn(styles.inputBorder, styles.inputWrapper, className);
+
   if (variant === 'complex') {
     return (
-      <InputWrapper
-        className={`${styles.inputBorder} ${styles.inputWrapper} ${className}`}>
-        <Input {...props} />
+      <InputWrapper className={textIputStyles}>
         {children}
+        <Input {...props} />
       </InputWrapper>
     );
   }
 
-  return <Input {...props} className={`${styles.inputBorder} ${className}`} />;
+  return <Input {...props} className={inputStyles} />;
 };

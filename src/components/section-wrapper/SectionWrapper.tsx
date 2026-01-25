@@ -1,3 +1,4 @@
+import { clsx as cn } from 'clsx';
 import styles from './SectionWrapper.module.css';
 
 interface SectionWrapperProps {
@@ -9,7 +10,7 @@ export const SectionWrapper = ({
   children,
   className,
 }: SectionWrapperProps) => {
-  return (
-    <div className={`${styles.sectionWrapper} ${className}`}>{children}</div>
-  );
+  const sectionWrapperStyles = cn(styles.sectionWrapper, className);
+
+  return <div className={sectionWrapperStyles}>{children}</div>;
 };

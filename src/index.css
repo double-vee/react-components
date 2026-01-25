@@ -12,6 +12,8 @@
   --secondary: #535bf2;
   --secondary-light: #646cff;
   --secondary-lighter: #747bff;
+  --success: #53d5f2;
+  --danger: #f2539d;
 
   --bg-color-app: var(--black);
   --bg-color-element: var(--dark);
@@ -26,9 +28,21 @@
   --line-thickness: 0.094rem;
   --border-size: 0.125rem;
 
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
-    helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica,
-    arial, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    avenir next,
+    avenir,
+    segoe ui,
+    helvetica neue,
+    Adwaita Sans,
+    Cantarell,
+    Ubuntu,
+    roboto,
+    noto,
+    helvetica,
+    arial,
+    sans-serif;
   font-weight: 400;
   line-height: 1.5;
 
@@ -50,6 +64,7 @@ h1 {
 }
 
 a {
+  border-radius: 4rem;
   font-weight: 500;
   color: currentColor;
   text-decoration-line: underline;
@@ -61,28 +76,34 @@ a:hover {
   color: var(--link-color-hover);
 }
 
-a:focus-visible {
+button {
+  border: var(--border-size) solid transparent;
   border-radius: 4rem;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+:is(a, button):focus-visible {
   outline: var(--border-size) solid var(--border-color-hover);
   outline-offset: 0.25rem;
 }
 
-button {
-  border: var(--border-size) solid var(--border-color);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--bg-color-element);
-  color: var(--text-color-btn);
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: border-color 0.25s;
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-button:is(:hover, :focus, :focus-visible) {
-  border-color: var(--border-color-hover);
-  outline: none;
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 @media (prefers-color-scheme: light) {
