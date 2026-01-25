@@ -1,0 +1,35 @@
+.styledButton {
+  gap: 0.5rem;
+  border: var(--border-size) solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-color-btn);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: border-color 0.25s;
+}
+
+.styledButton:hover {
+  border-color: var(--border-color-hover);
+}
+
+.styledButton svg {
+  flex-shrink: 0;
+}
+
+.primary {
+  background-color: var(--bg-color-element);
+}
+
+.secondary {
+  background-color: var(--secondary);
+}
+
+.success {
+  background-color: var(--success);
+}
+
+.danger {
+  background-color: var(--danger);
+}

@@ -1,0 +1,19 @@
+.danger[fill] {
+  fill: var(--danger);
+}
+
+.success[fill] {
+  fill: var(--success);
+}
+
+.small {
+  width: 1rem;
+}
+
+.medium {
+  width: 1.5rem;
+}
+
+.large {
+  width: 2rem;
+}
