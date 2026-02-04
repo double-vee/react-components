@@ -1,9 +1,10 @@
-import { Button } from '../../components/button/Button';
-import { StyledButton } from '../../components/button/StyledButton';
-import { heartIcon } from '../../components/icon/heart';
-import { Icon } from '../../components/icon/Icon';
-import { TextInput } from '../../components/input/Input';
-import { SectionWrapper } from '../../components/section-wrapper/SectionWrapper';
+import { Button } from '../../components/common/button/Button';
+import { StyledButton } from '../../components/common/button/StyledButton';
+import { heartIcon } from '../../components/common/icon/heart';
+import { Icon } from '../../components/common/icon/Icon';
+import { ExternalLink } from '../../components/common/link/ExternalLink';
+import { TextInput } from '../../components/common/input/Input';
+import { SectionWrapper } from '../../components/common/section-wrapper/SectionWrapper';
 import styles from './Home.module.css';
 
 export const HomePage = () => {
@@ -17,7 +18,7 @@ export const HomePage = () => {
       </Button>
       <StyledButton label="Delete" variant="danger" />
       <p>
-        Text with a <a href="#">link example</a>.
+        Text with a <ExternalLink href="#">link example</ExternalLink>.
       </p>
       <form>
         <TextInput

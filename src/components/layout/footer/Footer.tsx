@@ -1,4 +1,4 @@
-import { SectionWrapper } from '../section-wrapper/SectionWrapper';
+import { SectionWrapper } from '../../common/section-wrapper/SectionWrapper';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
