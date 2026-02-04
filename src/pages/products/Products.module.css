@@ -1,0 +1,5 @@
+.productsWrapper {
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 1rem;
+}
