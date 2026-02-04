@@ -8,8 +8,7 @@
   text-indent: 0.5rem;
 }
 
-.inputBase:focus,
-.inputBase:focus-visible {
+.inputBase:focus {
   outline: none;
 }
 
@@ -32,11 +31,11 @@
 }
 
 .inputBorder:hover {
-  border-color: var(--border-color-hover);
+  background-color: var(--dark-closer);
 }
 
-.inputBorder:is(input:focus-visible),
-.inputBorder:has(input:focus-visible) {
+.inputBorder:focus-visible,
+.inputBorder:has(.inputBase:focus-visible) {
   outline: var(--border-size) solid var(--border-color-hover);
   outline-offset: 0.25rem;
 }

@@ -11,7 +11,7 @@
 }
 
 .styledButton:hover {
-  border-color: var(--border-color-hover);
+  background-color: var(--dark-closer);
 }
 
 .styledButton svg {
