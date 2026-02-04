@@ -1,43 +1,28 @@
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import { Button } from '../button/Button';
 import { Icon } from '../icon/Icon';
 import { searchIcon } from '../icon/search';
 import { TextInput } from '../input/Input';
-import { COMPONENTS, type Component } from '../../data/components';
 import styles from './SearchForm.module.css';
 
 interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   label: string;
   name: string;
   placeholder: string;
-  setSearchResults: React.Dispatch<React.SetStateAction<Component[] | []>>;
+  query?: string;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const SearchForm = ({
   label,
   name,
   placeholder,
-  setSearchResults,
+  query,
+  handleChange,
+  handleSubmit,
 }: SearchFormProps) => {
-  const [query, setQuery] = useState('');
   const id = useId();
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    if (query.length > 0) {
-      const formattedQuery = query.toLowerCase().trim();
-      const filteredItems = COMPONENTS.filter((item) =>
-        item.title.match(formattedQuery),
-      );
-
-      setSearchResults(filteredItems);
-    }
-  }
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
 
   return (
     <search>
