@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Layout } from '../layout/Layout';
 import { HomePage } from '../../pages/home/Home';
-import { CategoryPage } from '../../pages/components/Components';
-import { ComponentPage } from '../../pages/components/component/Component';
+import { ProductPage } from '../../pages/products/Products';
+import { ProductDetailsPage } from '../../pages/products/product/Product';
+import { SearchPage } from '../../pages/search/Search';
 import { CartPage } from '../../pages/cart/Cart';
 import { SignupPage } from '../../pages/signup/Signup';
 import { LoginPage } from '../../pages/login/Login';
@@ -14,10 +15,11 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="components">
-            <Route index element={<CategoryPage />} />
-            <Route path="component/:componentId" element={<ComponentPage />} />
+          <Route path="products">
+            <Route index element={<ProductPage />} />
+            <Route path="p/:productId" element={<ProductDetailsPage />} />
           </Route>
+          <Route path="search" element={<SearchPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
