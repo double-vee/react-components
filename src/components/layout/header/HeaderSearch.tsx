@@ -1,20 +1,35 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { SearchForm } from '../../common/search/SearchForm';
-import { type Product } from '../../../data/products';
-import { filterProducts } from '../../../helpers/functions';
+import { useFetchData } from '../../../hooks/useFetchData';
+import {
+  debounce,
+  filterProducts,
+  limitProducts,
+} from '../../../helpers/functions';
+import { ENDPOINT } from '../../../helpers/constants';
+import { type Product } from '../../../types/types';
 import styles from './HeaderSearch.module.css';
 
 export const HeaderSearch = () => {
+  const [initialProducts] = useFetchData(ENDPOINT);
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Product[] | []>([]);
-
   const navigate = useNavigate();
+
+  const setDebouncedSuggestions = debounce(
+    (input: string, products: Product[]) => {
+      const filtered = filterProducts(input, products);
+      const sliced = limitProducts(filtered);
+
+      setSuggestions(sliced);
+    },
+  );
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
     setQuery(input);
-    setSuggestions(input ? filterProducts(input).slice(0, 6) : []);
+    setDebouncedSuggestions(input, initialProducts);
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -49,7 +64,7 @@ export const HeaderSearch = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      {query && <SuggestionList list={suggestionList} />}
+      {suggestions.length > 0 && <SuggestionList list={suggestionList} />}
     </section>
   );
 };
