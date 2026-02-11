@@ -14,10 +14,6 @@
   background-color: var(--dark-closer);
 }
 
-.styledButton svg {
-  flex-shrink: 0;
-}
-
 .primary {
   background-color: var(--bg-color-element);
 }

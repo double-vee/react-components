@@ -20,6 +20,7 @@
   --bg-color-element: var(--dark);
   --border-color: var(--dark-lighter);
   --link-color-hover: var(--secondary-lighter);
+  --outline-focus: var(--link-color-hover);
   --text-color: var(--light);
   --text-color-btn: var(--light);
 
@@ -97,7 +98,7 @@ button {
 }
 
 :is(a, button):focus-visible {
-  outline: var(--border-size) solid var(--border-color-hover);
+  outline: var(--border-size) solid var(--outline-focus);
   outline-offset: 0.25rem;
 }
 

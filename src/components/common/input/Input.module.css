@@ -36,7 +36,7 @@
 
 .inputBorder:focus-visible,
 .inputBorder:has(.inputBase:focus-visible) {
-  outline: var(--border-size) solid var(--border-color-hover);
+  outline: var(--border-size) solid var(--outline-focus);
   outline-offset: 0.25rem;
 }
 

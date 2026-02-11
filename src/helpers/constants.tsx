@@ -1,1 +1,1 @@
-export const ENDPOINT = '/public/data.json';
+export const ENDPOINT = '/data.json';
