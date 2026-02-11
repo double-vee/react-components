@@ -6,6 +6,7 @@ import { TextInput } from '../input/Input';
 import styles from './SearchForm.module.css';
 
 interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  className?: string;
   label: string;
   name: string;
   placeholder: string;
@@ -15,6 +16,7 @@ interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
 }
 
 export const SearchForm = ({
+  className,
   label,
   name,
   placeholder,
@@ -25,7 +27,7 @@ export const SearchForm = ({
   const id = useId();
 
   return (
-    <search>
+    <search className={className}>
       <form
         id={`searchForm-${id}`}
         name={name}

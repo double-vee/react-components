@@ -1,0 +1,14 @@
+.productFilterWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.productFilterSearch {
+  flex: 1;
+}
+
+.productFilterReset {
+  min-width: 2rem;
+  min-height: 2rem;
+}
