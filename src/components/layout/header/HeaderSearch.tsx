@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { SearchForm } from '../../common/search/SearchForm';
 import { useFetchData } from '../../../hooks/useFetchData';
+import { SearchForm } from '../../common/search/SearchForm';
+import { SuggestionList } from './SuggestionList';
 import {
   debounce,
   filterProducts,
@@ -44,16 +45,6 @@ export const HeaderSearch = () => {
     setSuggestions([]);
   }
 
-  const suggestionList = suggestions.map((product) => (
-    <li key={product.title} className={styles.headerSearchSuggestion}>
-      <Link
-        to={`/products/p/${product.title}`}
-        onClick={handleSelectSuggestion}>
-        {product.title}
-      </Link>
-    </li>
-  ));
-
   return (
     <section className={styles.headerSearchSection}>
       <SearchForm
@@ -64,15 +55,12 @@ export const HeaderSearch = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      {suggestions.length > 0 && <SuggestionList list={suggestionList} />}
+      {suggestions.length > 0 && (
+        <SuggestionList
+          suggestions={suggestions}
+          handleSelectSuggestion={handleSelectSuggestion}
+        />
+      )}
     </section>
   );
-};
-
-interface SuggestionListProps {
-  list: React.JSX.Element[];
-}
-
-const SuggestionList = ({ list }: SuggestionListProps) => {
-  return <ul className={styles.headerSearchSuggestionList}>{list}</ul>;
 };
