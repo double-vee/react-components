@@ -11,8 +11,9 @@ interface SearchFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   name: string;
   placeholder: string;
   query?: string;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+  handleSubmit?: React.FormEventHandler<HTMLFormElement>;
+  handleKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 }
 
 export const SearchForm = ({
@@ -23,6 +24,7 @@ export const SearchForm = ({
   query,
   handleChange,
   handleSubmit,
+  handleKeyDown,
 }: SearchFormProps) => {
   const id = useId();
 
@@ -32,7 +34,8 @@ export const SearchForm = ({
         id={`searchForm-${id}`}
         name={name}
         className={styles.searchForm}
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+      >
         <TextInput
           id={`searchInput-${id}`}
           label={label}
@@ -41,7 +44,9 @@ export const SearchForm = ({
           type="search"
           variant="complex"
           value={query}
-          onChange={handleChange}>
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        >
           <Button label="Submit search term">
             <Icon path={searchIcon} />
           </Button>

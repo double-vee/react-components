@@ -1,21 +1,32 @@
 import { Link } from 'react-router';
+import { clsx as cn } from 'clsx';
 import styles from './Suggestions.module.css';
 
 interface SuggestionProps {
-  handleSelectSuggestion: () => void;
+  resetHeaderSearch: () => void;
+  index: number;
+  selectedSuggestionIndex: number | null;
   title: string;
 }
 
 export const Suggestion = ({
-  handleSelectSuggestion,
+  resetHeaderSearch,
+  index,
+  selectedSuggestionIndex,
   title,
 }: SuggestionProps) => {
   return (
-    <li className={styles.suggestion}>
+    <li
+      className={cn(
+        styles.suggestion,
+        index === selectedSuggestionIndex && styles.selected,
+      )}
+    >
       <Link
         to={`/products/p/${title}`}
-        onClick={handleSelectSuggestion}
-        className={styles.suggestionLink}>
+        onClick={resetHeaderSearch}
+        className={styles.suggestionLink}
+      >
         {title}
       </Link>
     </li>

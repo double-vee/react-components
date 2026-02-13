@@ -16,6 +16,9 @@ export const HeaderSearch = () => {
   const [initialProducts] = useFetchData(ENDPOINT);
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Product[] | []>([]);
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState<
+    number | null
+  >(null);
   const navigate = useNavigate();
 
   const setDebouncedSuggestions = debounce(
@@ -24,8 +27,15 @@ export const HeaderSearch = () => {
       const sliced = limitProducts(filtered);
 
       setSuggestions(sliced);
+      setSelectedSuggestionIndex(null);
     },
   );
+
+  function resetHeaderSearch() {
+    setQuery('');
+    setSuggestions([]);
+    setSelectedSuggestionIndex(null);
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
@@ -36,13 +46,45 @@ export const HeaderSearch = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     navigate(`/search?q=${query}`);
-    setQuery('');
-    setSuggestions([]);
+    resetHeaderSearch();
   }
 
-  function handleSelectSuggestion() {
-    setQuery('');
-    setSuggestions([]);
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (!suggestions || suggestions.length === 0) {
+      return;
+    }
+
+    // Arrows:
+
+    if (e.key === 'ArrowDown') {
+      const nextIndex =
+        selectedSuggestionIndex === null ||
+        selectedSuggestionIndex === suggestions.length - 1
+          ? 0
+          : selectedSuggestionIndex + 1;
+
+      const { title } = suggestions[nextIndex];
+
+      setSelectedSuggestionIndex(nextIndex);
+      setQuery(title);
+    }
+
+    if (e.key === 'ArrowUp') {
+      const prevIndex = !selectedSuggestionIndex
+        ? suggestions.length - 1
+        : selectedSuggestionIndex - 1;
+
+      const { title } = suggestions[prevIndex];
+
+      setSelectedSuggestionIndex(prevIndex);
+      setQuery(title);
+    }
+
+    // Esc:
+
+    if (e.key === 'Esc') {
+      resetHeaderSearch();
+    }
   }
 
   return (
@@ -54,11 +96,13 @@ export const HeaderSearch = () => {
         query={query}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        handleKeyDown={handleKeyDown}
       />
       {suggestions.length > 0 && (
         <SuggestionList
           suggestions={suggestions}
-          handleSelectSuggestion={handleSelectSuggestion}
+          selectedSuggestionIndex={selectedSuggestionIndex}
+          resetHeaderSearch={resetHeaderSearch}
         />
       )}
     </section>

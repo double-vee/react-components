@@ -3,19 +3,23 @@ import { type Product } from '../../../types/types';
 import styles from './Suggestions.module.css';
 
 interface SuggestionListProps {
-  handleSelectSuggestion: () => void;
+  resetHeaderSearch: () => void;
   suggestions: Product[] | [];
+  selectedSuggestionIndex: number | null;
 }
 
 export const SuggestionList = ({
-  handleSelectSuggestion,
+  resetHeaderSearch,
   suggestions,
+  selectedSuggestionIndex,
 }: SuggestionListProps) => {
-  const list = suggestions.map(({ title }) => (
+  const list = suggestions.map(({ title }, i) => (
     <Suggestion
       key={title}
+      index={i}
+      selectedSuggestionIndex={selectedSuggestionIndex}
       title={title}
-      handleSelectSuggestion={handleSelectSuggestion}
+      resetHeaderSearch={resetHeaderSearch}
     />
   ));
 
